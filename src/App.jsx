@@ -19,6 +19,27 @@ function App() {
 
       <div id="posts-index">
         <h1>All posts</h1>
+        <div>
+          <h2>Blog Post 1</h2>
+          <div>
+            <img src="google.com" />
+          </div>
+          <p>This is the first post</p>
+        </div>
+        <div>
+          <h2>Blog Post 2</h2>
+          <div>
+            <img src="ween.com" />
+          </div>
+          <p>This is the second post</p>
+        </div>
+        <div>
+          <h2>Blog Post 3</h2>
+          <div>
+            <img src="radiohead.com" />
+          </div>
+          <p>This is the third post</p>
+        </div>
       </div>
 
       <footer>
