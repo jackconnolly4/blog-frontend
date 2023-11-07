@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PostsIndex } from "./PostsIndex";
 import { PostsNew } from "./PostsNew";
 import { Modal } from "./Modal";
@@ -22,10 +22,13 @@ export function Content() {
       setPosts(response.data);
     });
   };
+
+  useEffect(handleIndexPosts, []);
+
   return (
     <div>
       <PostsNew />
-      <button onClick={handleIndexPosts}>Load Posts</button>
+
       <PostsIndex posts={posts} onShowPost={handleShowPost} />
       <Modal show={isPostsShowVisible} onClose={handleClose}>
         <p>TEST</p>
