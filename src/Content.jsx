@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { PostsIndex } from "./PostsIndex";
 import { PostsNew } from "./PostsNew";
 import { Modal } from "./Modal";
@@ -24,11 +25,22 @@ export function Content() {
       image: "https://1000logos.net/wp-content/uploads/2020/04/Radiohead-Logo.png",
     },
   ];
+
+  const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
+
+  const handleShowPost = () => {
+    setIsPostsShowVisible(true);
+  };
+
+  const handleClose = () => {
+    setIsPostsShowVisible(false);
+  };
+
   return (
     <div>
       <PostsNew />
-      <PostsIndex posts={posts} />
-      <Modal show={true}>
+      <PostsIndex posts={posts} onShowPost={handleShowPost} />
+      <Modal show={isPostsShowVisible} onClose={handleClose}>
         <p>TEST</p>
       </Modal>
     </div>
