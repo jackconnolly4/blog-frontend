@@ -36,7 +36,7 @@ export function Content() {
       <Modal show={isPostsShowVisible} onClose={handleClose}>
         <h2>Title: {currentPost.title}</h2>
         <p>body: {currentPost.body}</p>
-        <p>{currentPost.image}</p>
+        <img src={currentPost.image} />
         <p>Created at: {currentPost.created_at}</p>
       </Modal>
     </div>
