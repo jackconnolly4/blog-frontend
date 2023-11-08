@@ -7,14 +7,17 @@ import axios from "axios";
 export function Content() {
   const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
 
-  const handleShowPost = () => {
+  const handleShowPost = (post) => {
     setIsPostsShowVisible(true);
+    setCurrentPost(post);
   };
 
   const handleClose = () => {
     setIsPostsShowVisible(false);
   };
   const [posts, setPosts] = useState([]);
+
+  const [currentPost, setCurrentPost] = useState({});
 
   const handleIndexPosts = () => {
     axios.get("http://localhost:3000/posts.json").then((response) => {
@@ -31,7 +34,10 @@ export function Content() {
 
       <PostsIndex posts={posts} onShowPost={handleShowPost} />
       <Modal show={isPostsShowVisible} onClose={handleClose}>
-        <p>TEST</p>
+        <h2>Title: {currentPost.title}</h2>
+        <p>body: {currentPost.body}</p>
+        <p>{currentPost.image}</p>
+        <p>Created at: {currentPost.created_at}</p>
       </Modal>
     </div>
   );
