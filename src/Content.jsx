@@ -5,6 +5,7 @@ import { PostsShow } from "./PostsShow";
 import { Modal } from "./Modal";
 import axios from "axios";
 import { Signup } from "./Signup";
+import { Login } from "./Login";
 
 export function Content() {
   const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
@@ -63,6 +64,8 @@ export function Content() {
     <div className="container">
       <h3>Signup!</h3>
       <Signup />
+      <h2>Login</h2>
+      <Login />
       <PostsNew onCreatePost={handleCreatePost} />
       <PostsIndex posts={posts} onShowPost={handleShowPost} />
       <Modal show={isPostsShowVisible} onClose={handleClose}>
