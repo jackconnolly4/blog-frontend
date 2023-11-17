@@ -7,6 +7,7 @@ import axios from "axios";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
+import { Routes, Route } from "react-router-dom";
 
 export function Content() {
   const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
@@ -63,8 +64,9 @@ export function Content() {
 
   return (
     <div className="container">
-      <h3>Signup!</h3>
-      <Signup />
+      <Routes>
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
       <Login />
       <LogoutLink />
       <PostsNew onCreatePost={handleCreatePost} />
