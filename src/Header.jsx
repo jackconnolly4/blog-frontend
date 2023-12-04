@@ -1,6 +1,32 @@
 import { Link } from "react-router-dom";
 
 export function Header() {
+  let authenticationLinks;
+  if (localStorage.jwt === undefined) {
+    authenticationLinks = (
+      <>
+        <li className="nav-item">
+          <Link className="nav-link" to="/signup">
+            Signup
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/login">
+            Login
+          </Link>
+        </li>
+      </>
+    );
+  } else {
+    authenticationLinks = (
+      <li className="nav-item">
+        <Link className="nav-link" to="/logout">
+          Logout
+        </Link>
+      </li>
+    );
+  }
+
   return (
     <header>
       <div>
@@ -66,21 +92,7 @@ export function Header() {
                 <li className="nav-item">
                   <a className="nav-link disabled">Disabled</a>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/signup">
-                    Signup
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/login">
-                    Login
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" to="/logout">
-                    Logout
-                  </a>
-                </li>
+                {authenticationLinks}
               </ul>
               <form className="d-flex" role="search">
                 <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
