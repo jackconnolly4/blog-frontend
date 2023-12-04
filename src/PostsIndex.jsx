@@ -7,14 +7,24 @@ export function PostsIndex(props) {
     <div id="posts-index">
       <form className="d-flex" role="search">
         Search filter:{" "}
-        <input type="text" value={searchFilter} onChange={(event) => setSearchFilter(event.target.value)} />
+        <input
+          type="text"
+          value={searchFilter}
+          onChange={(event) => setSearchFilter(event.target.value)}
+          list="titles"
+        />
+        <datalist id="titles">
+          {props.posts.map((post) => (
+            <option key={post.id}>{post.title}</option>
+          ))}
+        </datalist>
         <button className="btn btn-outline-success" type="submit">
           Search
         </button>
       </form>
       <h1>All posts</h1>
       {props.posts
-        .filter((post) => post.body.toLowerCase().includes(searchFilter.toLowerCase()))
+        .filter((post) => post.title.toLowerCase().includes(searchFilter.toLowerCase()))
         .map((post) => (
           <div key={post.id}>
             <h2>{post.title}</h2>
